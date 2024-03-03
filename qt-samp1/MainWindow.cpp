@@ -2,6 +2,7 @@
 #include "./ui_MainWindow.h"
 
 #include "qdebug.h"
+#include <QApplication>
 #include <QTextEdit>
 #include <QEvent>
 #include <QKeyEvent>
@@ -19,7 +20,9 @@ MainWindow::MainWindow(QWidget *parent)
 	this->setFixedSize(this->width(), this->height());
 	this->setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::WindowStaysOnTopHint);
 
-	this->setWindowTitle("Qt" QT_VERSION_STR " - SAMPLE 1");
+	auto app = dynamic_cast<QGuiApplication*>(QGuiApplication::instance());
+	QString title = "Qt Sample 1 - Qt" QT_VERSION_STR "@" + app->platformName();
+	this->setWindowTitle(title);
 	
 	//ui->lineEditCnt->setEnabled(false);
 	ui->lineEditCnt->setReadOnly(true);

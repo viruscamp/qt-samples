@@ -17,13 +17,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)  # 要求编译器满足 C++标准
 # cmake .. -DQT_VERSION_MAJOR=5 #强制使用 Qt5
 # cmake .. -DQT_VERSION_MAJOR=6 #强制使用 Qt6
 if (NOT DEFINED QT_VERSION_MAJOR)
-    message("NOT DEFINED QT_VERSION_MAJOR , try find_package(QT NAMES Qt6 Qt5)")
-    find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
+    message("NOT DEFINED QT_VERSION_MAJOR , try find_package(QT NAMES Qt6 Qt5 REQUIRED Core)")
+    find_package(QT NAMES Qt6 Qt5 REQUIRED Core)
     message("Found QT_VERSION_MAJOR = " ${QT_VERSION_MAJOR})
 else()
     message("DEFINED QT_VERSION_MAJOR = " ${QT_VERSION_MAJOR})
 endif()
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Gui Widgets REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED Core Gui Widgets)
 find_package(fmt REQUIRED)
 
 # 设置变量 PROJECT_SOURCES 等于下面的列表

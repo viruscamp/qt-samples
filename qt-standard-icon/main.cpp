@@ -12,6 +12,7 @@
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+    QString title = "QStyle::StandardPixmap - Qt" QT_VERSION_STR "@" + app.platformName();
 
     auto style = app.style();
 #if (QT_VERSION >= QT_VERSION_CHECK(6,1,0))
@@ -22,6 +23,7 @@ int main(int argc, char *argv[])
     qDebug() << "available style: " << styleNames;
 
     QTableWidget tableWidget;
+    tableWidget.setWindowTitle(title);
 
     const int count =  enum_max<QStyle::StandardPixmap>();
 
@@ -89,8 +91,6 @@ int main(int argc, char *argv[])
 
     tableWidget.setMinimumWidth(680);
     tableWidget.setMinimumHeight(600);
-    
-    tableWidget.setWindowTitle("Qt" QT_VERSION_STR " QStyle::StandardPixmap");
 
     tableWidget.show();
  
